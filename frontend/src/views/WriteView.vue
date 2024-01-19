@@ -21,7 +21,7 @@ const content = ref('')
 
 const write = function () {
   // CORS
-  axios.post('http://localhost:3000', {
+  axios.post('/api/posts', {
     title: title.value,
     content: content.value
   })

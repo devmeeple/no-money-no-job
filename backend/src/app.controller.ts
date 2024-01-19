@@ -10,7 +10,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
+  @Post('posts')
   write(@Body() body: { title: string; content: string }) {
     console.log(`클라이언트에서 온 데이터 ${body.title}, ${body.content}`);
   }
