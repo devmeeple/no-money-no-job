@@ -13,19 +13,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import axios from 'axios'
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
-const title = ref('')
-const content = ref('')
+const title = ref('');
+const content = ref('');
+
+const router = useRouter();
 
 const write = function () {
   // CORS
-  axios.post('/api/posts', {
-    title: title.value,
-    content: content.value
-  })
-}
+  axios
+    .post('/api/posts', {
+      title: title.value,
+      content: content.value
+    })
+    .then(() => {
+      // 글 작성후 뒤로가기 막기
+      router.replace({ name: 'home' });
+    });
+};
 </script>
 
 <style scoped></style>
